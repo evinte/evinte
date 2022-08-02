@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300&family=Merriweather+Sans:wght@800&family=Montserrat+Subrayada:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@1&display=swap" rel="stylesheet">
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Factiva</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href="{{ url_for('static', filename='main.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='main.js') }}"></script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300&family=Merriweather+Sans:wght@800&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <head>
+        <div class="header">
+            <a class="logo">Factiva Evaluation</a>
+            <div class="header-right">
+                <a href="/">Home</a>
+                <a href="/about">About</a>
+                <a href="/evaluator">Back To Evaluator</a>
+                <a href="/chatbot">Go To Chatbot</a>
+            </div>
+          </div>
+    </head>
+    <body class="content">
+        <div class="overall">
+            <h0>Factiva Evaluation Score: </h1>
+            <a class="score">{{ data[10] }}</a>
+        </div>
+        <div class="liquidity">
+            <h1>Liquidity Ratio</h1>
+            <div class="parameter">
+                <h2>Current Ratio: {{ data[2] }}</h2>
+                <h3>Current Ratio is a liquidity ratio that measures a company's ability to pay short-term obligations or those due within one year.</h3>
+                {% if data[2] >= 1 %}
+                <p>Your company is having a current ratio greater than 1.00. Its indicates that your company has the financial resources to remain solvent in the short term. However, because the current ratio at any one time is just a snapshot, it is usually not a complete representation of a company's short-term liquidity or longer-term solvency.</p>
+                {% else %}
+                <p>Your company has a ratio under 1.00 indicates that your company's debts due in a year or less are greater than its assets—cash or other short-term assets expected to be converted to cash within a year or less. A current ratio of less than 1.00 may seem alarming, although different situations can negatively affect the current ratio in a solid company.</p>
+                {%endif%}
+            </div>
+            <div class="parameter">
+                <h2>Long Term Debt to Equity: {{ data[4] }}</h2>
+                <h3>Long term debt to equity ratio is a leverage ratio comparing the total amount of long-term debt against the shareholders' equity of a company. The goal of this ratio is to determine how much leverage the company is taking. </h3>
+                {% if data[4] > 1 %}
+                <p>Your debt-to-equity ratio is too high, it's a signal that your company may be in financial distress and unable to pay your debtors.</p>
+                {% elif data[4] > 0.5 %}
+                <p>Your business is having a good long term debt to equity ratio, which means that your business can be trusted to run a successful operation.</p>
+                {% else %}
+                <p>It's a sign that your company is over-relying on equity to finance your business, which can be costly and inefficient.</p>
+                {%endif%}
+            </div>
+            <div class="parameter">
+                <h2>Quick Ratio: {{ data[6] }}</h2>
+                <h3>The quick ratio is an indicator of a company's short-term liquidity position and measures a company’s ability to meet its short-term obligations with its most liquid assets.</h3>
+                {% if data[6] >= 1 %}
+                <p>Your company has a good quick ratio. A result of 1 is considered to be the normal quick ratio. It indicates that the company is fully equipped with exactly enough assets to be instantly liquidated to pay off its current liabilities. </p>
+                {% elif data[6] < 1 %}
+                <p>Your company has a bad quick ratio. A company that has a quick ratio of less than 1 may not be able to fully pay off its current liabilities in the short term.</p>
+                {% else %}
+                <p>Your company has a great quick ratio. A company having a quick ratio higher than 1 can instantly get rid of its current liabilities.</p>
+                {%endif%}
+            </div>
+            <div class="parameter">
+                <h2>Debt to Equity Ratio: {{ data[9] }}</h2>
+                <h3>Debt-to-equity (D/E) ratio compares a company's total liabilities to its shareholder equity and can be used to evaluate how much leverage a company is using.</h3>
+                {% if data[7] <= 1 %}
+                <p>Your company has a great debt to equity ratio. A ratio less than 1 implies that the assets are financed mainly through equity. A lower debt to equity ratio means the company primarily relies on wholly-owned funds to leverage its finances.</p>
+                {% elif data[7] >= 2 %}
+                <p>Your company has too high debt to equity ratiom. Which means your company relies twice as much on debt to drive growth than it does on equity, and that creditors, therefore, own two-thirds of the company's assets.</p>
+                {% else %}
+                <p>Your company has a good debt to equity ratio. A debt ratio of greater than 1.0 or 100% means a company has more debt than assets while a debt ratio of less than 100% indicates that a company has more assets than debt.</p>
+                {%endif%}
+            </div>
+        </div>
+        <div class='profitability'>
+            <h1>Profitability Ratio</h1>
+            <div class="parameter">
+                <h2>Asset Turnover: {{ data[0] }}</h2>
+                <h3>Asset Turnover Ratio measures the value of a company's sales or revenues relative to the value of its assets. </h3>
+                {% if data[0] >= 1 %}
+                <p>Your company already doing a great job for generating the revenue. Your business is optimally generating revenue or sales from its assets while a low ratio is an indication of inefficient utilization of assets which shows that the company might be having internal issues.</p>
+                {% elif data[0] >= 0.5 %}
+                <p>Your company already doing a good job for generating the revenue, you could improve your Asset Turnover by generating more revenue, improve your inventory management, and increase your production efficiency.</p>
+                {% else %}
+                <p>Your company may attempt to raise a low asset turnover ratio by stocking its shelves with highly salable items, replenishing inventory only when necessary, and augmenting its hours of operation to increase customer foot traffic and spike sales. Just-in-time (JIT) inventory management, for instance, is a system whereby a firm receives inputs as close as possible to when they are actually needed. So, if a car assembly plant needs to install airbags, it does not keep a stock of airbags on its shelves, but receives them as those cars come onto the assembly line.</p>
+                {%endif%}
+            </div>
+            <div class="parameter">
+                <h2>Inventory Turnover: {{ data[3] }}</h2>
+                <h3>Inventory turnover is a financial ratio showing how many times a company has sold and replaced inventory during a given period.</h3>
+                {% if data[3] >= 1 %}
+                <p>Your business have a great inventory turnover, implies either strong sales or insufficient inventory. The former is desirable while the latter could lead to lost business. The speed at which a company can sell inventory is a critical measure of business performance. Retailers that move inventory out faster tend to outperform. The longer an item is held, the higher its holding cost will be, and the fewer reasons consumers will have to return to the shop for new items.</p>
+                {% else %}
+                <p>Your company has a low inventory turnover ratio. A low turnover implies weak sales and possibly excess inventory, also known as overstocking. It may indicate a problem with the goods being offered for sale or be a result of too little marketing.</p>
+                {%endif%}
+            </div>
+            <div class="parameter">
+                <h2>Pretax Margin: {{ data[5] }}</h2>
+                <h3>The pretax profit margin is a financial accounting tool used to measure the operating efficiency of a company. It is a ratio that tells us the percentage of sales that has turned into profits or, in other words, how many cents of profit the business has generated for each dollar of sale before deducting taxes.</h3>
+                {% if data[5] > 0.75 %}
+                <p>Your company has a great pretax margin. The higher margin is preferable because it shows the company is making more profit from its business.</p>
+                {% elif data[5] >= 0.5 %}
+                <p>Your company has a good pretax margin. Which means that your business is running efficiently and profitable as the revenue.</p>
+                {% else %}
+                <p>Your company has a low pretax margin that indicates poorer profitability. As a result, your companies may rely more on a low tax environment to ensure profits.</p>
+                {%endif%}
+            </div>
+            <div class="parameter">
+                <h2>Return on Asset: {{ data[7] }}</h2>
+                <h3>Return on assets (ROA) refers to a financial ratio that indicates how profitable a company is in relation to its total assets. Corporate management, analysts, and investors can use ROA to determine how efficiently a company uses its assets to generate a profit.</h3>
+                {% if data[7] >= 0.2 %}
+                <p>Your company has a great ROA. Companies with a high ROA usually have fewer assets involved in generating their profits.</p>
+                {% elif data[7] < 0.05 %}
+                <p>Your company has a low Return on Asset. Companies with a low ROA usually have more assets involved in generating their profits. As a result, companies with a low ROA tend to have more debt since they need to finance the cost of the assets. Having more debt is not bad as long as management uses it effectively to generate earnings.</p>
+                {% else %}
+                <p>Your company has a good return on asset. Which means your company already generating profit with a good production efficiency.</p>
+                {%endif%}
+            </div>
+            <div class="parameter">
+                <h2>Return on Equity: {{ data[8] }}</h2>
+                <h3>Return on assets (ROA) refers to a financial ratio that indicates how profitable a company is in relation to its total assets. Corporate management, analysts, and investors can use ROA to determine how efficiently a company uses its assets to generate a profit.</h3>
+                {% if data[7] >= 0.2 %}
+                <p>Your company has a great ROA. Companies with a high ROA usually have fewer assets involved in generating their profits.</p>
+                {% elif data[7] < 0.05 %}
+                <p>Your company has a low Return on Asset. Companies with a low ROA usually have more assets involved in generating their profits. As a result, companies with a low ROA tend to have more debt since they need to finance the cost of the assets. Having more debt is not bad as long as management uses it effectively to generate earnings.</p>
+                {% else %}
+                <p>Your company has a good return on asset. Which means your company already generating profit with a good production efficiency.</p>
+                {%endif%}
+            </div>
+        </div>
+        <div class="valuation">
+            <h1>Valuation Ratio</h1>
+            <div class="parameter">
+                <h2>Current Enterprise Value Over Free Cash Flow: {{ data[1] }}</h2>
+                <h3>Enterprise Value to Free Cash Flow compares the total valuation of the company with its ability to generate cashflow.</h3>
+                {% if data[1] <= 0.5 %}
+                <p>Your company already doing a great job for managing the expenses and production process. Your company can pay back the cost of its acquisition or generate cash to reinvest in its business. When the enterprise's ratio to free cash flow is low, it means the company can pay back the cost of its acquisition rather quickly. If one is comparing firms, lower multiples are higher in value as compared to higher multiples.</p>
+                {% elif data[1] > 1 %}
+                <p>Your company has a bad ratio. Which means your company need to improve your production process efficiency, and cutting your cost and expenses.</p>
+                {% else %}
+                <p>Your company already doing a good job for managing expenses and production process.</p>
+                {%endif%}
+            </div>
+        </div>
+        
+    </body>
+</body>
+</html>

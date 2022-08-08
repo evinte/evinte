@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Factiva</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <link rel='stylesheet' type='text/css' media='screen' href="{{ url_for('static', filename='evaluator.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300&display=swap" rel="stylesheet">
+    <script src="{{url_for('static', filename='main.js')}}"></script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300&family=Merriweather+Sans:wght@800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <head>
+        <div class="header">
+            <a class="logo">Factiva Evaluator</a>
+            <div class="header-right">
+                <a href="/">Home</a>
+                <a href="/about">About</a>
+                <a class="active" href="/chatbot">Go To Consultant</a>
+            </div>
+          </div>
+    </head>
+    <body>
+        <div>
+            <button type="button" onclick="collapse()">
+                Information
+            </button>
+        </div>
+        <div class="container">
+            <form method="POST", action="{{url_for('prediction')}}">
+                <div class="row">
+                    <div class="col-25">
+                    <label  for="totalasset">Asset :</label>
+                    </div>
+                    <div class="col-75">
+                    <input type="text" name="totalasset" name="lastname" placeholder="Ammount of Total Asset" required>
+                    </div>
+                    <div class="explanation-text">
+                        <p>
+                            Asset is any resource owned or controlled by a business or an economic entity.
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                    <label for="equity">Equity :</label>
+                    </div>
+                    <div class="col-75">
+                    <input type="text" name="equity" name="lastname" placeholder="Ammount of Equity" required>
+                    </div>
+                    <div class="explanation-text">
+                        <p>
+                            Equity is ownership of assets that may have debts or other liabilities attached to them.
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                    <label for="lname">Free Cash Flow :</label>
+                    </div>
+                    <div class="col-75">
+                    <input type="text" name="fcf" name="lastname" placeholder="Ammount of Free Cash Flow" required>
+                    </div>
+                    <div class="explanation-text">
+                        <p>
+                            Free cash flow (FCF) represents the cash available for the company to repay creditors and pay out dividends and interest to investors.
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                    <label for="lname">Liability/Debt :</label>
+                    </div>
+                    <div class="col-75">
+                    <input type="text" name="liability" name="lastname" placeholder="Ammount of Liability" required>
+                    </div>
+                    <div class="explanation-text">
+                        <p>
+                            A liability is something a person or company owes, usually a sum of money. Liabilities are settled over time through the transfer of economic benefits including money, goods, or services.
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                    <label for="lname">Net Income :</label>
+                    </div>
+                    <div class="col-75">
+                    <input type="text" name="netincome" name="lastname" placeholder="Ammount of Net Income" required>
+                    </div>
+                    <div class="explanation-text">
+                        <p>
+                            Net income is gross profit minus all other expenses and costs as well as any other income and revenue sources that are not included in gross income.
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                    <label for="lname">Inventory :</label>
+                    </div>
+                    <div class="col-75">
+                    <input type="text" name="inventory" name="lastname" placeholder="Ammount of Inventory" required>
+                    </div>
+                    <div class="explanation-text" >
+                        <p >
+                            Inventory refers to a company's goods and products that are ready to sell, along with the raw materials that are used to produce them. Inventory can be categorized in three different ways, including raw materials, work-in-progress, and finished goods.
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                    <label for="lname">Revenue :</label>
+                    </div>
+                    <div class="col-75">
+                    <input type="text" name="revenue" name="lastname" placeholder="Ammount of Revenue" required>
+                    </div>
+                    <div class="explanation-text">
+                        <p>
+                            Revenue is the total amount of income generated by the sale of goods or services related to the company's primary operations.
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <input class="wrap" type="submit" value="Evaluate!">
+                </div>
+            </form>
+          </div>
+    </body>
+</body>
+</html>

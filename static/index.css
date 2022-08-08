@@ -1,0 +1,117 @@
+.header {
+    margin: 5px ;
+    padding: 10px 10px;
+    height: 50px;
+    border-radius: 30px;
+    color: #f1f1f1;
+    background-color: #101820;
+  }
+  /* Style the header links */
+  .header a {
+    font-family: 'Poppins', sans-serif;;
+    border-radius: 30px;
+    float: left;
+    color: rgb(255, 231, 231);
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 25px;
+    border-radius: 4px;
+  }
+  
+  /* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */
+  .header a.logo {
+    font-family: 'Merriweather Sans', sans-serif;;
+    font-size: 25px;
+    font-weight: 700;
+    color: #ffa600;
+  }
+  
+  /* Change the background color on mouse-over */
+  .header a:hover {
+    border-radius: 30px;
+    background-color: hsl(34, 100%, 70%);
+    color: #101820;
+    font-weight: bold;
+  }
+  /* Style the active/current link*/
+  .header a.active {
+    border-radius: 30px;
+    font-weight: bolder;
+    background-color: #ff950b;
+    color: #101820;
+  }
+  
+  /* Float the link section to the right */
+  .header-right {
+    float: right;
+  }
+  .border {
+    margin: 30px;
+    border: 5px solid #101820;
+    background-color: #101820;
+    border-radius: 5px;
+  }
+  body {
+    background-color: #ffbd66;
+  }
+  .home {
+    padding: 200px;
+    color: #101820;
+    margin: 20px;
+    background-color: #ff9f22;
+    border-radius: 25px;
+    text-align: center;
+  }
+  .home:hover{
+    transition-duration: 0.5s;
+    box-shadow: 10px 10px #101820;
+  }
+  h0 {
+    font-weight: 900;
+    font-family: 'Montserrat Subrayada', sans-serif;
+    font-size: 4.09rem;
+  }
+  h2 {
+    padding: 10px 10px 0px ;
+    font-family: 'Montserrat', sans-serif;
+    display: block;
+    font-size: 1.6rem;
+    margin-top: 0.33rem;
+    margin-bottom: 0.33rem;
+    margin-left: 0.5;
+    margin-right: 0.5;
+    font-weight: bolder;
+  }
+  a {
+    color: #101820;
+    text-decoration: none;
+  }
+  a:hover {
+    transition-duration: 0.5s;
+    color: #ffb14a;
+    text-decoration: none;
+    font-weight: bolder;
+  }
+  button {
+    border-color: #101820;
+    border-width: thick;
+    background-color: #ffb14a;
+    border-radius: 100px;
+    color: #101820;
+    width: 350px;
+    font-family: 'Libre Baskerville', serif;
+    font-size: 1rem;
+    padding: 25px;
+    margin-top: 0.5rem;
+    margin-bottom: 0.33rem;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  button:hover {
+    transition-delay:0.2s ;
+    background-color: #101820;
+    color: #ffb14a;
+    transition-duration: 0.75s;
+  }
